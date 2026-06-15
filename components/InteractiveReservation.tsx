@@ -35,9 +35,26 @@ export default function InteractiveReservation() {
     setHoveredTable(found);
   };
 
-  const handleDragEnd = () => {
-    if (hoveredTable) {
-      setSelectedTable(hoveredTable);
+  const handleDragEnd = (_: any, info: any) => {
+    if (!containerRef.current) {
+      setHoveredTable(null);
+      return;
+    }
+    const rect = containerRef.current.getBoundingClientRect();
+    const dropX = ((info.point.x - rect.left) / rect.width) * 100;
+    const dropY = ((info.point.y - rect.top) / rect.height) * 100;
+
+    let found = null;
+    for (const table of TABLES) {
+      const dist = Math.sqrt(Math.pow(dropX - table.x, 2) + Math.pow(dropY - table.y, 2));
+      if (dist < 20) {
+        found = table.id;
+        break;
+      }
+    }
+    
+    if (found) {
+      setSelectedTable(found);
       setIsBooked(false);
     }
     setHoveredTable(null);
