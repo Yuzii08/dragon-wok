@@ -147,7 +147,14 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content
 .wok-btn:hover{transform:translateY(-2px);}
 .order-btn{background:#25D366;color:#fff;text-decoration:none;display:inline-block;box-shadow:3px 3px 0px #111;}
 .reset-btn{background:#fff;color:#111;box-shadow:3px 3px 0px #111;}
-@media(max-width:840px){.wok-grid{grid-template-columns:1fr;gap:40px;}.wok-title{font-size:36px;}.wok-section{padding:60px 20px;}}
+@media(max-width:840px){
+  .wok-grid{grid-template-columns:1fr;gap:20px;}
+  .wok-title{font-size:36px;}
+  .wok-section{padding:60px 20px;}
+  .ingredients-container{display:flex; flex-wrap:nowrap; overflow-x:auto; padding-bottom:20px; -webkit-overflow-scrolling:touch;}
+  .ingredient-tag{flex-shrink:0; font-size:14px; padding:10px 16px; margin-right:12px;}
+  .wok-simulator{gap:20px;}
+}
 
 /* ═══ SCRATCH CARD ═══ */
 .scratch-section{padding:80px 40px;background:#F9F8F4;display:flex;flex-direction:column;align-items:center;}
@@ -415,8 +422,27 @@ body.dark-mode .drag-instructions { color:#f5a623; }
 
 @media(max-width:900px) {
   .sketch-container { flex-direction:column; height:auto; }
-  .sketch-map { height:400px; }
-  .sticker-drag-area { width:100%; padding:40px; }
+  .sketch-map { height:350px; }
+  .sketch-table.small { width: 50px; height: 50px; }
+  .sketch-table.medium { width: 80px; height: 50px; }
+  .sketch-table.large { width: 100px; height: 70px; }
+  .sketch-table-label { font-size: 14px; }
+  .sketch-chair { width: 14px; height: 14px; }
+  
+  /* Positioning Chairs on Mobile */
+  .sketch-table.small .chair-1 { top:-18px; }
+  .sketch-table.small .chair-2 { bottom:-18px; }
+  .sketch-table.medium .chair-1 { top:-18px; }
+  .sketch-table.medium .chair-2 { top:-18px; }
+  .sketch-table.medium .chair-3 { bottom:-18px; }
+  .sketch-table.large .chair-1 { top:-18px; }
+  .sketch-table.large .chair-2 { top:-18px; }
+  .sketch-table.large .chair-3 { bottom:-18px; }
+  .sketch-table.large .chair-4 { bottom:-18px; }
+  .sketch-table.large .chair-5 { left:-18px; }
+  .sketch-table.large .chair-6 { right:-18px; }
+
+  .sticker-drag-area { width:100%; padding:20px; }
   .receipt-popup { width:100%; }
 }
 

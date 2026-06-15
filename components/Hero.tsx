@@ -41,12 +41,12 @@ export default function Hero() {
     };
 
     const handleOrientation = (e: DeviceOrientationEvent) => {
-      if (!e.gamma || !e.beta) return;
-      // gamma is left-to-right tilt in degrees, where right is positive
-      // beta is front-to-back tilt in degrees, where front is positive
-      const x = Math.max(-1, Math.min(1, e.gamma / 45));
-      // subtract 45 so holding phone at 45deg is "neutral"
-      const y = Math.max(-1, Math.min(1, (e.beta - 45) / 45)); 
+      if (e.gamma === null || e.beta === null) return;
+      // gamma is left-to-right tilt in degrees
+      // beta is front-to-back tilt in degrees
+      // Amplify by 2 so a slight tilt creates a big effect
+      const x = Math.max(-1, Math.min(1, (e.gamma * 2) / 45));
+      const y = Math.max(-1, Math.min(1, ((e.beta - 45) * 2) / 45)); 
       
       mouseX.set(x);
       mouseY.set(y);
@@ -71,9 +71,9 @@ export default function Hero() {
       const permissionState = await (DeviceOrientationEvent as any).requestPermission();
       if (permissionState === 'granted') {
         window.addEventListener('deviceorientation', (e: DeviceOrientationEvent) => {
-          if (!e.gamma || !e.beta) return;
-          const x = Math.max(-1, Math.min(1, e.gamma / 45));
-          const y = Math.max(-1, Math.min(1, (e.beta - 45) / 45)); 
+          if (e.gamma === null || e.beta === null) return;
+          const x = Math.max(-1, Math.min(1, (e.gamma * 2) / 45));
+          const y = Math.max(-1, Math.min(1, ((e.beta - 45) * 2) / 45)); 
           mouseX.set(x);
           mouseY.set(y);
         });
