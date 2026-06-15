@@ -59,8 +59,21 @@ export default function Hero() {
       window.addEventListener("deviceorientation", handleOrientation);
     }
 
+    const handleTouchMove = (e: TouchEvent) => {
+      if (e.touches.length > 0) {
+        const { innerWidth, innerHeight } = window;
+        const touch = e.touches[0];
+        const x = (touch.clientX / innerWidth) * 2 - 1;
+        const y = (touch.clientY / innerHeight) * 2 - 1;
+        mouseX.set(x);
+        mouseY.set(y);
+      }
+    };
+
+    window.addEventListener("touchmove", handleTouchMove, { passive: true });
     window.addEventListener("mousemove", handleMouseMove);
     return () => {
+      window.removeEventListener("touchmove", handleTouchMove);
       window.removeEventListener("mousemove", handleMouseMove);
       window.removeEventListener("deviceorientation", handleOrientation);
     };

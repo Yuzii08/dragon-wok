@@ -100,8 +100,12 @@ export default function InteractiveReservation() {
             return (
               <div
                 key={table.id}
+                onClick={() => {
+                  setSelectedTable(table.id);
+                  setIsBooked(false);
+                }}
                 className={`sketch-table ${table.size} ${isSelected ? 'selected' : ''} ${isHovered && !selectedTable ? 'glow' : ''}`}
-                style={{ left: `${table.x}%`, top: `${table.y}%`, transform: `translate(-50%, -50%) rotate(${table.id % 2 === 0 ? 3 : -2}deg)` }}
+                style={{ cursor: "pointer", left: `${table.x}%`, top: `${table.y}%`, transform: `translate(-50%, -50%) rotate(${table.id % 2 === 0 ? 3 : -2}deg)` }}
               >
                 {Array.from({ length: table.seats }).map((_, i) => (
                   <div key={i} className={`sketch-chair chair-${i + 1}`}></div>
