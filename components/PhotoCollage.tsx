@@ -133,17 +133,20 @@ export default function PhotoCollage() {
               onDragEnd={() => setActiveId(null)}
               initial={{ 
                 opacity: 0, 
-                scale: 0.8,
-                left: p.defaultX,
-                top: p.defaultY,
-                rotate: p.rotate
+                scale: 0.1,
+                left: "40%",
+                top: "40%",
+                rotate: (p.id % 2 === 0 ? 180 : -180) * (p.id * 0.5)
               }}
-              animate={{ 
+              whileInView={{ 
                 opacity: 1, 
                 scale: isCurrentActive ? 1.06 : 1,
+                left: p.defaultX,
+                top: p.defaultY,
                 rotate: isCurrentActive ? 0 : p.rotate,
                 zIndex
               }}
+              viewport={{ once: true, margin: "-100px" }}
               whileHover={{ scale: isCurrentActive ? 1.06 : 1.03 }}
               transition={{ type: "spring", stiffness: 260, damping: 20 }}
               style={{

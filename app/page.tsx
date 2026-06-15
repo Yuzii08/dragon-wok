@@ -13,10 +13,15 @@ import NoodleScrollLine from "@/components/NoodleScrollLine";
 
 // New "Website of the Year" features
 import Preloader from "@/components/Preloader";
-import CursorTrail from "@/components/CursorTrail";
 import ThemeSwitcher from "@/components/ThemeSwitcher";
 import FortuneCookie from "@/components/FortuneCookie";
 import InteractiveReservation from "@/components/InteractiveReservation";
+
+// Ultimate Features
+import ParallaxShowcase from "@/components/ParallaxShowcase";
+import OurStory from "@/components/OurStory";
+import KitchenTracker from "@/components/KitchenTracker";
+import ReviewMarquee from "@/components/ReviewMarquee";
 
 export default function Home() {
   return (
@@ -24,15 +29,18 @@ export default function Home() {
       <Preloader />
       <ThemeSwitcher />
       <FortuneCookie />
+      <KitchenTracker />
       
       <Navbar />
       <NoodleScrollLine />
       <Hero />
       <Menu />
       <WokMixer />
-      <InteractiveReservation />
+      <ReviewMarquee />
+      <OurStory />
       <AnimatedWords />
       <PhotoCollage />
+      <InteractiveReservation />
       <ScratchCard />
       <Contact />
       <Footer />

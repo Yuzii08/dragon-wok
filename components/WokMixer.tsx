@@ -188,13 +188,15 @@ export default function WokMixer() {
               return (
                 <motion.div
                   key={ing.id}
+                  layout
                   className={`ingredient-tag ${isInWok ? "in-wok" : ""}`}
                   drag={!isInWok}
                   dragConstraints={containerRef}
-                  dragElastic={0.1}
+                  dragElastic={0.2}
+                  dragTransition={{ bounceStiffness: 800, bounceDamping: 15 }}
                   onDragEnd={(e, info) => handleDragEnd(ing.id, ing.name, info)}
                   onTap={() => { if (!isInWok) handleAddIngredient(ing.id); }}
-                  whileDrag={{ scale: 1.1, rotate: 5, zIndex: 100 }}
+                  whileDrag={{ scale: 1.15, rotate: 10, cursor: "grabbing", zIndex: 100 }}
                   whileHover={{ scale: isInWok ? 1 : 1.05 }}
                   style={{ touchAction: "none", cursor: isInWok ? "default" : "grab" }}
                 >

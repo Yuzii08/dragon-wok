@@ -139,13 +139,25 @@ export default function Menu() {
                     <h3 className="panel-category-title">{category.cat}</h3>
                     <div className="panel-items-grid">
                       {category.items.map((item, itemIdx) => (
-                        <div key={itemIdx} className="panel-item-card">
+                        <motion.div 
+                          key={itemIdx} 
+                          className="panel-item-card"
+                          initial={{ opacity: 0, x: 100, scale: 0.8 }}
+                          whileInView={{ opacity: 1, x: 0, scale: 1 }}
+                          viewport={{ once: true, amount: 0.1 }}
+                          transition={{ 
+                            type: "spring", 
+                            stiffness: 200, 
+                            damping: 15,
+                            delay: itemIdx * 0.1 
+                          }}
+                        >
                           <div className="panel-item-header">
                             <span className="panel-item-name">{item.name}</span>
                             <span className="panel-item-price">{item.price}</span>
                           </div>
                           {item.desc && <p className="panel-item-desc">{item.desc}</p>}
-                        </div>
+                        </motion.div>
                       ))}
                     </div>
                   </div>
