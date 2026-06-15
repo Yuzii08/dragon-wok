@@ -59,7 +59,7 @@ export default function InteractiveReservation() {
                   className="table-reserved-badge"
                   initial={{ scale: 0 }}
                   animate={{ scale: 1 }}
-                  type="spring"
+                  transition={{ type: "spring" }}
                 >
                   ✓
                 </motion.div>
