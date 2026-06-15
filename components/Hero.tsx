@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useMotionValue, useSpring, useTransform, Variants } from "framer-motion";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const DOODLES = [
   { cls: "d1", svg: `<svg viewBox="0 0 100 100" fill="none" stroke="#111" stroke-width="3"><path d="M 10 50 Q 25 10, 50 50 T 90 50" /><circle cx="50" cy="50" r="5" fill="#f5a623"/></svg>` },
@@ -29,9 +29,10 @@ export default function Hero() {
   const smoothX = useSpring(mouseX, { stiffness: 75, damping: 20 });
   const smoothY = useSpring(mouseY, { stiffness: 75, damping: 20 });
 
+  const [needsPermission, setNeedsPermission] = useState(false);
+
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
-      // Calculate mouse position relative to center of screen, normalized between -1 and 1
       const { innerWidth, innerHeight } = window;
       const x = (e.clientX / innerWidth) * 2 - 1;
       const y = (e.clientY / innerHeight) * 2 - 1;
@@ -39,9 +40,49 @@ export default function Hero() {
       mouseY.set(y);
     };
 
+    const handleOrientation = (e: DeviceOrientationEvent) => {
+      if (!e.gamma || !e.beta) return;
+      // gamma is left-to-right tilt in degrees, where right is positive
+      // beta is front-to-back tilt in degrees, where front is positive
+      const x = Math.max(-1, Math.min(1, e.gamma / 45));
+      // subtract 45 so holding phone at 45deg is "neutral"
+      const y = Math.max(-1, Math.min(1, (e.beta - 45) / 45)); 
+      
+      mouseX.set(x);
+      mouseY.set(y);
+    };
+
+    // Check if device orientation requires permission (iOS 13+)
+    if (typeof (DeviceOrientationEvent as any).requestPermission === 'function') {
+      setNeedsPermission(true);
+    } else {
+      window.addEventListener("deviceorientation", handleOrientation);
+    }
+
     window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("deviceorientation", handleOrientation);
+    };
   }, [mouseX, mouseY]);
+
+  const requestGyroPermission = async () => {
+    try {
+      const permissionState = await (DeviceOrientationEvent as any).requestPermission();
+      if (permissionState === 'granted') {
+        window.addEventListener('deviceorientation', (e: DeviceOrientationEvent) => {
+          if (!e.gamma || !e.beta) return;
+          const x = Math.max(-1, Math.min(1, e.gamma / 45));
+          const y = Math.max(-1, Math.min(1, (e.beta - 45) / 45)); 
+          mouseX.set(x);
+          mouseY.set(y);
+        });
+        setNeedsPermission(false);
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   // Tagline animation variants
   const taglineText = "The Art of Chinese Cuisine, Perfected";
@@ -127,6 +168,18 @@ export default function Hero() {
       >
         7th Street, Downtown — (Opens 11:00 AM)
       </motion.p>
+
+      {needsPermission && (
+        <motion.button 
+          className="gyro-permission-btn"
+          onClick={requestGyroPermission}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 2 }}
+        >
+          Enable 3D Motion 📱
+        </motion.button>
+      )}
     </section>
   );
 }
