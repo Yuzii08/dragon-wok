@@ -20,12 +20,14 @@ export default function InteractiveReservation() {
   const handleDrag = (_: any, info: any) => {
     if (!containerRef.current) return;
     const rect = containerRef.current.getBoundingClientRect();
-    const dropX = ((info.point.x - rect.left) / rect.width) * 100;
-    const dropY = ((info.point.y - rect.top) / rect.height) * 100;
+    const rectTop = rect.top + window.scrollY;
+    const rectLeft = rect.left + window.scrollX;
+    
+    const dropX = ((info.point.x - rectLeft) / rect.width) * 100;
+    const dropY = ((info.point.y - rectTop) / rect.height) * 100;
 
     let found = null;
     for (const table of TABLES) {
-      // Massive hitbox (20% radius) guarantees it catches the drop
       const dist = Math.sqrt(Math.pow(dropX - table.x, 2) + Math.pow(dropY - table.y, 2));
       if (dist < 20) {
         found = table.id;
@@ -41,8 +43,11 @@ export default function InteractiveReservation() {
       return;
     }
     const rect = containerRef.current.getBoundingClientRect();
-    const dropX = ((info.point.x - rect.left) / rect.width) * 100;
-    const dropY = ((info.point.y - rect.top) / rect.height) * 100;
+    const rectTop = rect.top + window.scrollY;
+    const rectLeft = rect.left + window.scrollX;
+    
+    const dropX = ((info.point.x - rectLeft) / rect.width) * 100;
+    const dropY = ((info.point.y - rectTop) / rect.height) * 100;
 
     let found = null;
     for (const table of TABLES) {
