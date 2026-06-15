@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Courier+Prime:wght@400;700&display=swap');
 
 *{margin:0;padding:0;box-sizing:border-box;}
-body{background:#F9F8F4;color:#111;font-family:'Courier Prime',monospace;overflow-x:hidden;}
+body{background:#F9F8F4;color:#111;font-family:'Courier Prime',monospace;overflow-x:clip;}
 html{scroll-behavior:smooth;}
 
 /* ═══ NAV ═══ */
@@ -224,3 +224,80 @@ footer a:hover{text-decoration:underline;opacity:.6;}
 .mobile-bar a:last-child{background:#25D366;}
 .mobile-bar a:hover{opacity:.85;}
 @media(max-width:768px){.mobile-bar{display:flex;}body{padding-bottom:52px;}}
+
+/* ═══ PRELOADER ═══ */
+.preloader-container{position:fixed;inset:0;background:#111;z-index:10000;display:flex;align-items:center;justify-content:center;flex-direction:column;}
+.preloader-content{text-align:center;display:flex;flex-direction:column;align-items:center;}
+.preloader-bowl{width:200px;margin-bottom:20px;}
+.preloader-text{font-family:'Permanent Marker',cursive;font-size:24px;color:#f5a623;letter-spacing:2px;}
+
+/* ═══ THEME SWITCHER (DARK MODE) ═══ */
+body.dark-mode { background:#121212; color:#e0e0e0; }
+body.dark-mode .menu-outer-section { background:#0a0a0a; border-color:#333; }
+body.dark-mode .menu-title { color:#00ffcc; text-shadow:0 0 10px rgba(0,255,204,0.5); }
+body.dark-mode .menu-panel { background:#1a1a1a; color:#fff; border-color:#00ffcc; box-shadow:8px 8px 0px rgba(0,255,204,0.3); }
+body.dark-mode .panel-bg-doodle svg { stroke:rgba(0,255,204,0.1); }
+body.dark-mode .panel-category-title { border-color:#00ffcc; color:#00ffcc; }
+body.dark-mode .wok-shelf { background:#1a1a1a; border-color:#ff0055; box-shadow:8px 8px 0px rgba(255,0,85,0.3); }
+body.dark-mode .ingredient-tag { background:#2a2a2a; color:#fff; border-color:#ff0055; box-shadow:4px 4px 0px rgba(255,0,85,0.3); }
+body.dark-mode .scratch-section, body.dark-mode .collage-outer, body.dark-mode footer { background:#121212; color:#fff; }
+body.dark-mode .polaroid-table { background:#1a1a1a; background-image:radial-gradient(#333 2px, transparent 2px); }
+body.dark-mode .polaroid-card { background:#222; color:#fff; border-color:#00ffcc; }
+body.dark-mode nav { background:rgba(18,18,18,0.95); border-color:#ff0055; }
+body.dark-mode .nav-links a, body.dark-mode .logo { color:#fff; border-color:#fff; }
+body.dark-mode .hero-tagline { color:#00ffcc; text-shadow:0 0 20px rgba(0,255,204,0.4); }
+body.dark-mode .doodle svg { stroke:#333; }
+
+.theme-switcher-container { position:fixed; top:0; right:40px; z-index:9990; display:flex; flex-direction:column; align-items:center; }
+.pull-string-wrapper { display:flex; flex-direction:column; align-items:center; cursor:grab; }
+.pull-string-wrapper:active { cursor:grabbing; }
+.pull-string-cord { width:2px; height:60px; background:#111; }
+.pull-string-handle { width:40px; height:40px; border-radius:50%; background:#f5a623; border:3px solid #111; display:flex; align-items:center; justify-content:center; cursor:pointer; font-size:20px; box-shadow:0 4px 10px rgba(0,0,0,0.2); }
+.theme-label { font-family:'Courier Prime',monospace; font-size:10px; font-weight:700; opacity:0; transform:translateY(-10px); transition:all 0.3s; background:#111; color:#fff; padding:4px 8px; border-radius:4px; margin-top:10px; pointer-events:none; }
+.theme-label.visible { opacity:1; transform:translateY(0); }
+body.dark-mode .pull-string-cord { background:#fff; }
+body.dark-mode .pull-string-handle { background:#111; border-color:#00ffcc; }
+
+/* ═══ FORTUNE COOKIE ═══ */
+.fortune-cookie-container { position:fixed; bottom:30px; left:30px; z-index:9980; }
+.cookie-unopened { font-size:50px; cursor:pointer; filter:drop-shadow(4px 4px 0px rgba(0,0,0,0.2)); }
+.cookie-opened-paper { background:#fff; border:2px solid #111; border-radius:4px; padding:12px 24px 12px 16px; box-shadow:4px 4px 0px #f5a623; position:relative; max-width:250px; display:flex; align-items:center; font-family:'Courier Prime',monospace; font-size:14px; font-weight:700; color:#111; border-left:8px solid #f5a623; }
+.close-fortune { position:absolute; top:4px; right:4px; background:none; border:none; font-size:16px; font-weight:bold; cursor:pointer; color:#777; }
+
+/* ═══ INTERACTIVE RESERVATION (FLOOR PLAN) ═══ */
+.reservation-section { padding:100px 40px; max-width:1000px; margin:0 auto; display:flex; flex-direction:column; align-items:center; }
+.reservation-header { text-align:center; margin-bottom:40px; }
+.reservation-title { font-family:'Permanent Marker',cursive; font-size:42px; text-transform:uppercase; }
+.reservation-subtitle { font-family:'Courier Prime',monospace; font-size:16px; color:#555; }
+.floorplan-container { position:relative; width:100%; max-width:800px; height:500px; border:4px solid #111; background:#f0ebd8; border-radius:16px; overflow:hidden; display:flex; box-shadow:10px 10px 0px #ccc; }
+.floorplan-map { position:relative; flex:1; border-right:4px dashed #111; }
+.table-element { position:absolute; border:3px solid #111; background:#fff; display:flex; align-items:center; justify-content:center; font-family:'Courier Prime',monospace; font-size:12px; font-weight:700; transition:all 0.3s; }
+.table-element.small { width:80px; height:80px; border-radius:50%; }
+.table-element.medium { width:120px; height:80px; border-radius:40px; }
+.table-element.large { width:160px; height:90px; border-radius:10px; }
+.table-element:hover { background:#f5a623; color:#111; cursor:pointer; }
+.table-element.reserved { background:#25D366; color:#fff; border-color:#111; }
+.table-reserved-badge { position:absolute; top:-10px; right:-10px; background:#111; color:#fff; width:24px; height:24px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:14px; }
+.vip-drag-area { width:200px; display:flex; flex-direction:column; align-items:center; justify-content:center; background:#fff; }
+.vip-pass-draggable { cursor:grab; z-index:10; touch-action:none; }
+.vip-pass-inner { background:#111; color:#f5a623; border:3px solid #f5a623; border-radius:8px; padding:16px; text-align:center; box-shadow:4px 4px 0px #ccc; }
+.vip-icon { font-size:32px; display:block; margin-bottom:8px; }
+.vip-text { font-family:'Permanent Marker',cursive; font-size:18px; letter-spacing:2px; }
+.drag-instructions { font-family:'Courier Prime',monospace; font-size:12px; font-weight:700; color:#777; margin-top:20px; text-transform:uppercase; animation:bounceUp 1.5s infinite; }
+.reservation-ticket { position:absolute; bottom:20px; right:20px; background:#fff; border:4px solid #111; border-radius:12px; padding:24px; box-shadow:8px 8px 0px #f5a623; z-index:20; width:300px; }
+.reservation-ticket h3 { font-family:'Permanent Marker',cursive; font-size:20px; margin-bottom:16px; color:#111; }
+.ticket-form { display:flex; flex-direction:column; gap:12px; }
+.ticket-input { border:2px solid #ccc; border-radius:6px; padding:8px 12px; font-family:'Courier Prime',monospace; font-size:14px; outline:none; }
+.ticket-input:focus { border-color:#111; }
+.ticket-submit { background:#111; color:#fff; font-family:'Permanent Marker',cursive; font-size:16px; border:none; border-radius:6px; padding:10px; cursor:pointer; transition:transform 0.2s; }
+.ticket-submit:hover { transform:scale(1.02); background:#25D366; }
+.ticket-cancel { background:none; border:none; font-family:'Courier Prime',monospace; font-size:12px; color:#777; margin-top:12px; cursor:pointer; text-decoration:underline; width:100%; }
+
+/* ═══ WOK MIXER ENHANCEMENTS ═══ */
+.spice-controls { display:flex; flex-direction:column; align-items:center; margin-bottom:24px; }
+.spice-label { font-family:'Permanent Marker',cursive; font-size:18px; margin-bottom:8px; }
+.spice-slider { -webkit-appearance:none; width:200px; height:8px; background:#ccc; border-radius:4px; outline:none; cursor:pointer; }
+.spice-slider::-webkit-slider-thumb { -webkit-appearance:none; width:24px; height:24px; background:#f5a623; border:3px solid #111; border-radius:50%; cursor:pointer; }
+.toss-button { font-family:'Permanent Marker',cursive; font-size:24px; background:#f5a623; color:#111; border:4px solid #111; border-radius:12px; padding:12px 32px; cursor:pointer; box-shadow:6px 6px 0px #111; transition:transform 0.1s; display:block; margin:0 auto; }
+.toss-button:hover { transform:translateY(-2px); box-shadow:6px 8px 0px #111; }
+.toss-button:active { transform:translateY(4px); box-shadow:2px 2px 0px #111; }

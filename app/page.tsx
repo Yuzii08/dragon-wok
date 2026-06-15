@@ -11,14 +11,27 @@ import WhatsAppFloat from "@/components/WhatsAppFloat";
 import MobileBar from "@/components/MobileBar";
 import NoodleScrollLine from "@/components/NoodleScrollLine";
 
+// New "Website of the Year" features
+import Preloader from "@/components/Preloader";
+import CursorTrail from "@/components/CursorTrail";
+import ThemeSwitcher from "@/components/ThemeSwitcher";
+import FortuneCookie from "@/components/FortuneCookie";
+import InteractiveReservation from "@/components/InteractiveReservation";
+
 export default function Home() {
   return (
     <main>
+      <Preloader />
+      <CursorTrail />
+      <ThemeSwitcher />
+      <FortuneCookie />
+      
       <Navbar />
       <NoodleScrollLine />
       <Hero />
       <Menu />
       <WokMixer />
+      <InteractiveReservation />
       <AnimatedWords />
       <PhotoCollage />
       <ScratchCard />
