@@ -22,7 +22,6 @@ export default function Home() {
   return (
     <main>
       <Preloader />
-      <CursorTrail />
       <ThemeSwitcher />
       <FortuneCookie />
       
