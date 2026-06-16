@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Courier+Prime:wght@400;700&display=swap');
 
 *{margin:0;padding:0;box-sizing:border-box;}
-body{background:#F9F8F4;color:#111;font-family:'Courier Prime',monospace;overflow-x:clip;}
+body{background:#F9F8F4;color:#111;font-family:'Courier Prime',monospace;overflow-x:hidden;max-width:100vw;width:100%;}
 html{scroll-behavior:smooth;}
 
 /* ═══ NAV ═══ */
@@ -52,6 +52,10 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content
 .menu-outer-section{background:#111;color:#F9F8F4;border-top:4px solid #111;border-bottom:4px solid #111;}
 .menu-header{padding:80px 40px 20px;text-align:center;}
 .menu-title{font-family:'Permanent Marker',cursive;font-size:56px;text-transform:uppercase;font-style:italic;color:#F9F8F4;margin-bottom:12px;letter-spacing:1px;}
+@media(max-width:768px){
+  .menu-header{padding:60px 20px 20px;}
+  .menu-title{font-size:36px;}
+}
 .menu-status{font-family:'Courier Prime',monospace;font-size:16px;font-weight:700;text-transform:uppercase;letter-spacing:2px;}
 .menu-scroll-track{position:relative;height:360vh;}
 .menu-sticky-wrapper{position:sticky;top:0;height:100vh;display:flex;align-items:center;overflow:hidden;padding-top:80px;}
@@ -155,6 +159,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content
   .ingredient-tag{font-size:12px; padding:8px 12px;}
   .wok-simulator{gap:20px;}
 }
+@media(max-width:400px){
+  .wok-wrapper{transform:scale(0.85);margin:-20px 0;}
+}
 
 /* ═══ GYRO PERMISSION BUTTON ═══ */
 .gyro-permission-btn {
@@ -181,6 +188,10 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content
 /* ═══ SCRATCH CARD ═══ */
 .scratch-section{padding:80px 40px;background:#F9F8F4;display:flex;flex-direction:column;align-items:center;}
 .scratch-title{font-family:'Permanent Marker',cursive;font-size:42px;text-align:center;text-transform:uppercase;}
+@media(max-width:768px){
+  .scratch-section{padding:60px 20px;}
+  .scratch-title{font-size:32px;}
+}
 .scratch-subtitle{font-family:'Courier Prime',monospace;font-size:14px;text-align:center;color:#555;margin-bottom:40px;}
 .scratch-card-container{position:relative;width:320px;height:180px;border:5px solid #111;border-radius:16px;overflow:hidden;box-shadow:8px 8px 0px #111;cursor:crosshair;user-select:none;}
 .scratch-card-bg{position:absolute;inset:0;background:#fff;z-index:1;display:flex;align-items:center;justify-content:center;}
@@ -198,6 +209,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content
 /* ═══ POLAROID TABLE COLLAGE ═══ */
 .collage-outer{background:#EFECE6;border-top:4px solid #111;border-bottom:4px solid #111;padding:80px 40px 100px;overflow:hidden;}
 .collage-title{font-family:'Permanent Marker',cursive;font-size:52px;text-align:center;text-transform:uppercase;}
+@media(max-width:840px){
+  .collage-outer{padding:60px 20px 60px;}
+}
 .collage-subtitle{font-family:'Courier Prime',monospace;font-size:15px;text-align:center;color:#555;margin-bottom:50px;}
 .polaroid-table{position:relative;width:100%;max-width:1000px;height:650px;margin:0 auto;border:4px solid #111;border-radius:20px;background:#e5dfd5;background-image:radial-gradient(#d3c9ba 2px, transparent 2px);background-size:24px 24px;box-shadow:inset 0 0 30px rgba(0,0,0,0.08);overflow:hidden;}
 .table-underlay-doodle{position:absolute;z-index:2;display:flex;flex-direction:column;align-items:center;opacity:0.75;pointer-events:none;transform:scale(0.95);}
@@ -210,7 +224,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content
 .polaroid-img-wrapper{width:100%;aspect-ratio:1/1;border:2px solid #111;overflow:hidden;background:#ccc;margin-bottom:12px;}
 .polaroid-img-wrapper img{width:100%;height:100%;object-fit:cover;-webkit-user-drag:none;user-select:none;}
 .polaroid-caption{font-family:'Permanent Marker',cursive;font-size:15px;text-align:center;text-transform:uppercase;}
-@media(max-width:840px){.polaroid-table{height:1200px;}.polaroid-card{position:relative!important;left:0!important;top:0!important;margin:20px auto!important;}.table-underlay-doodle{display:none;}.collage-title{font-size:36px;}}
+@media(max-width:840px){.polaroid-table{height:auto;min-height:650px;padding:40px 0;display:flex;flex-direction:column;align-items:center;}.polaroid-card{position:relative!important;left:0!important;top:0!important;margin:20px auto!important;}.table-underlay-doodle{display:none;}.collage-title{font-size:36px;}}
 
 /* ═══ CONTACT + MAP ═══ */
 .info-section{display:grid;grid-template-columns:1fr 1fr;gap:40px;padding:100px 40px;max-width:1100px;margin:0 auto;align-items:center;}
@@ -301,6 +315,9 @@ body.dark-mode .hero-video-overlay { background:rgba(18,18,18,0.8); }
 
 /* ═══ OUR STORY ═══ */
 .our-story-section { padding:120px 40px; background:#F9F8F4; overflow:hidden; }
+@media(max-width:768px){
+  .our-story-section { padding:60px 20px; }
+}
 body.dark-mode .our-story-section { background:#121212; }
 .story-container { max-width:1200px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center; }
 .story-image-container { position:relative; }
@@ -355,6 +372,11 @@ body.dark-mode .review-name { color:#aaa; }
 .reservation-section { padding:120px 40px; max-width:1200px; margin:0 auto; display:flex; flex-direction:column; align-items:center; }
 .reservation-header { text-align:center; margin-bottom:60px; }
 .reservation-title { font-family:'Permanent Marker',cursive; font-size:48px; text-transform:uppercase; color:#111; }
+@media(max-width:900px){
+  .reservation-section { padding:60px 20px; }
+  .reservation-header { margin-bottom:40px; }
+  .reservation-title { font-size:36px; }
+}
 body.dark-mode .reservation-title { color:#fff; }
 .reservation-subtitle { font-family:'Courier Prime',monospace; font-size:16px; color:#555; }
 body.dark-mode .reservation-subtitle { color:#aaa; }
@@ -464,8 +486,8 @@ body.dark-mode .drag-instructions { color:#f5a623; }
   .sketch-table.large .chair-5 { left:-18px; }
   .sketch-table.large .chair-6 { right:-18px; }
 
-  .sticker-drag-area { width:100%; padding:20px; }
-  .receipt-popup { width:100%; }
+  .sticker-drag-area { width:100%; padding:20px; box-sizing:border-box; }
+  .receipt-popup { width:100%; box-sizing:border-box; }
 }
 
 /* ═══ WOK MIXER ENHANCEMENTS ═══ */
@@ -517,6 +539,8 @@ body.dark-mode .drag-instructions { color:#f5a623; }
 .story-badge { position:absolute; top:-20px; left:-20px; background:#D62B2B; color:#fff; font-family:'Courier Prime',monospace; font-size:12px; font-weight:bold; padding:8px; border:2px solid #111; border-radius:50%; width:70px; height:70px; display:flex; align-items:center; justify-content:center; text-align:center; transform:rotate(-15deg); box-shadow:4px 4px 0px #111; }
 
 @media(max-width:840px){
+  .parallax-showcase { padding:60px 20px; }
+  .story-section { padding:60px 20px; }
   .story-grid { grid-template-columns:1fr; }
   .showcase-title { font-size:32px; }
   .label-1 { left:5%; }
