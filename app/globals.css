@@ -311,7 +311,7 @@ footer a:hover{text-decoration:underline;opacity:.6;}
 .wa-float{position:fixed;bottom:24px;right:24px;width:56px;height:56px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;z-index:999;border:3px solid #111;text-decoration:none;animation:pulse 2.5s infinite;transition:transform 0.2s ease;}
 .wa-float:hover{transform:scale(1.1);}
 @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(37,211,102,.5);}70%{box-shadow:0 0 0 14px rgba(37,211,102,0);}100%{box-shadow:0 0 0 0 rgba(37,211,102,0);}}
-@media(max-width:768px){.wa-float{bottom:76px;}}
+@media(max-width:768px){.wa-float{display:none;}}
 
 /* ═══ MOBILE BAR ═══ */
 .mobile-bar{
@@ -559,7 +559,7 @@ body.dark-mode .drag-instructions { color:#f5a623; }
 
 @media(max-width:900px) {
   .sketch-container { flex-direction:column; height:auto; }
-  .sketch-map { height:350px; }
+  .sketch-map { height:350px; min-height:350px; flex:none; }
   .sketch-table.small { width: 50px; height: 50px; }
   .sketch-table.medium { width: 80px; height: 50px; }
   .sketch-table.large { width: 100px; height: 70px; }
