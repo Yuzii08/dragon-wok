@@ -105,7 +105,14 @@ export default function Menu() {
         // Mobile Layout: Swipable horizontal cards or clean rows
         <div className="menu-mobile-container">
           {MENU_CATEGORIES.map((category, idx) => (
-            <div key={idx} className="menu-card-mobile">
+            <motion.div 
+              key={idx} 
+              className="menu-card-mobile"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.4, delay: idx * 0.1 }}
+            >
               <div className="menu-card-header">
                 <h3>{category.cat}</h3>
                 <div 
@@ -115,16 +122,23 @@ export default function Menu() {
               </div>
               <div className="menu-card-items">
                 {category.items.map((item, itemIdx) => (
-                  <div key={itemIdx} className="menu-item-row">
+                  <motion.div 
+                    key={itemIdx} 
+                    className="menu-item-row"
+                    initial={{ opacity: 0, x: -15 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: itemIdx * 0.1 + 0.2 }}
+                  >
                     <div className="item-details">
                       <div className="item-name">{item.name}</div>
                       {item.desc && <div className="item-desc">{item.desc}</div>}
                     </div>
                     <div className="item-price">{item.price}</div>
-                  </div>
+                  </motion.div>
                 ))}
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       ) : (

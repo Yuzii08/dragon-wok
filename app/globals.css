@@ -23,7 +23,10 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content
 .hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;padding:120px 40px 80px;overflow:hidden;}
 .hero-tagline{font-family:'Permanent Marker',cursive;font-size:68px;text-align:center;text-transform:uppercase;line-height:1.1;z-index:2;position:relative;letter-spacing:1px;text-shadow: 2px 2px 0px rgba(0,0,0,0.05);}
 .hero-address{font-family:'Courier Prime',monospace;font-size:16px;color:#555;margin-top:20px;text-align:center;z-index:2;position:relative;letter-spacing:1.5px;font-weight:700;}
-@media(max-width:768px){.hero-tagline{font-size:36px;}.hero{padding:100px 20px 60px;}}
+@media(max-width:768px){
+  .hero-tagline{font-size:32px; line-height:1.4;}
+  .hero{padding:120px 20px 60px;}
+}
 
 /* ═══ DOODLES ═══ */
 .doodle{position:absolute;z-index:1;user-select:none;-webkit-user-drag:none;}
@@ -292,6 +295,9 @@ body.dark-mode .hero-tagline { color:#00ffcc; text-shadow:0 0 20px rgba(0,255,20
 body.dark-mode .doodle svg { stroke:#333; }
 
 .theme-switcher-container { position:fixed; top:0; right:40px; z-index:9990; display:flex; flex-direction:column; align-items:center; }
+@media(max-width:768px) {
+  .theme-switcher-container { top:60px; right:20px; transform:scale(0.8); transform-origin:top right; }
+}
 .pull-string-wrapper { display:flex; flex-direction:column; align-items:center; cursor:grab; }
 .pull-string-wrapper:active { cursor:grabbing; }
 .pull-string-cord { width:2px; height:60px; background:#111; }
@@ -348,7 +354,7 @@ body.dark-mode .tracker-inner { background:rgba(18,18,18,0.9); border-color:#00f
 .tracker-number { font-family:'Permanent Marker',cursive; font-size:24px; color:#ff0055; display:inline-block; min-width:50px; }
 .tracker-fire { font-size:20px; transition:transform 0.2s; }
 .tracker-fire.heating { transform:scale(1.5); }
-@media(max-width:768px) { .kitchen-tracker { top:auto; bottom:80px; } }
+@media(max-width:768px) { .kitchen-tracker { display:none; } }
 
 /* ═══ REVIEWS MARQUEE ═══ */
 .marquee-section { padding:60px 0; background:#ff0055; overflow:hidden; border-top:6px solid #111; border-bottom:6px solid #111; }
@@ -545,6 +551,6 @@ body.dark-mode .drag-instructions { color:#f5a623; }
   .showcase-title { font-size:32px; }
   .label-1 { left:5%; }
   .label-2 { right:5%; }
-  .fortune-cookie-container { bottom:80px; }
+  .fortune-cookie-container { display:none; }
   .cookie-opened-paper { white-space:normal; font-size:12px; }
 }
